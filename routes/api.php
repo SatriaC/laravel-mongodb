@@ -30,6 +30,14 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
+Route::group(['prefix' => 'kendaraan'], function () {
+    Route::get('/', [Kendaraan::class, 'index'])->name('kendaraan.index');
+    Route::post('/add', [Kendaraan::class, 'store'])->name('kendaraan.store');
+    Route::get('/{id}', [Kendaraan::class, 'show'])->name('kendaraan.show');
+    Route::post('/{id}/update', [Kendaraan::class, 'update'])->name('kendaraan.update');
+    Route::post('/{id}/delete', [Kendaraan::class, 'destroy'])->name('kendaraan.delete');
+});
+
 Route::group(['prefix' => 'mobil'], function () {
     Route::get('/', [MobilController::class, 'index'])->name('mobil.index');
     Route::post('/add', [MobilController::class, 'store'])->name('mobil.store');
