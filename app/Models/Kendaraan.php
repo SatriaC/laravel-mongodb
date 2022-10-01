@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class Kendaraan extends Model
 {
-    use HasFactory;
+    use HasFactory, HybridRelations;
     protected $collection = 'kendaraan';
     protected $primaryKey = '_id';
     protected $fillable = [
@@ -27,26 +27,6 @@ class Kendaraan extends Model
     public function mobil()
     {
         return $this->belongsTo(Mobil::class, 'mobil_id');
-    }
-
-    public function getMobilId($value)
-    {
-        return isset($value) ? $value : '';
-    }
-
-    public function getMotorId($value)
-    {
-        return isset($value) ? $value : '';
-    }
-
-    public function getMobilMesin($value)
-    {
-        return isset($value) ? $value : '';
-    }
-
-    public function getMotorMesin($value)
-    {
-        return isset($value) ? $value : '';
     }
 
     public function getTipeNameAttribute()

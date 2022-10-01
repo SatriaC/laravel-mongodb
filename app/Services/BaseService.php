@@ -2,17 +2,19 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class BaseService
 {
     protected $env;
     protected $productionEnv = 'production';
     protected $connection = 'mongodb';
+    protected $user;
 
     public function __construct()
     {
         $this->env = config('app.env');
+        $this->user = Auth::guard('api')->user();
     }
 
     public function responseMessage($message, $statusCode, $isSuccess = false, $data = [])
@@ -22,19 +24,6 @@ class BaseService
                 "message" => $message,
                 "success" => $isSuccess,
                 "data" => $data
-            ],
-            $statusCode
-        );
-    }
-
-    public function responseMessageDanamon($statusCode, $isSuccess = false, $correlationId = "", $errors = [])
-    {
-        return response()->json(
-            [
-                "errors" => $errors,
-                "correlationId" => $correlationId,
-                "timeStamp" => Carbon::now()->timezone('Asia/Jakarta'),
-                "success" => $isSuccess,
             ],
             $statusCode
         );

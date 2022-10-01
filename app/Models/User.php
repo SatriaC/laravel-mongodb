@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
@@ -44,4 +45,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getTotalPriceAttribute($value)
+    {
+        $total = 0;
+        $carts = Cart::where('user_id', Auth::guard('api')->user()->id)->get();
+
+        foreach ($carts as $item) {
+            $total += $item->total_price;
+        }
+
+        return $total;
+    }
 }

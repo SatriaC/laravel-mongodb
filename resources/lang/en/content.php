@@ -50,6 +50,10 @@ return [
         'image' => [
             'empty' => 'Image cannot be empty'
         ],
+        'cart' => [
+            'empty' => 'The cart is empty. Please check again',
+            'not_available' => 'The stock does not suffice your request. Please check again',
+        ],
 
         'phone_registered' => 'This phone is already registered'
     ],

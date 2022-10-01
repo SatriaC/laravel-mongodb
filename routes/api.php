@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\MotorController;
@@ -22,14 +23,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('/', [CartController::class, 'show'])->name('cart.show');
+        Route::post('/update', [CartController::class, 'updateOrCreate'])->name('cart.update');
+    });
 });
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login'])->name('login');
 });
-
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
