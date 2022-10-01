@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MobilController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
@@ -28,10 +29,10 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/{id}/delete', [UserController::class, 'destroy'])->name('user.delete');
 });
 
-Route::group(['prefix' => 'vehicle'], function () {
-    Route::get('/', [VehicleController::class, 'index'])->name('vehicle.index');
-    Route::post('/add', [VehicleController::class, 'store'])->name('vehicle.store');
-    Route::get('/{id}', [VehicleController::class, 'show'])->name('vehicle.show');
-    Route::post('/{id}/update', [VehicleController::class, 'update'])->name('vehicle.update');
-    Route::post('/{id}/delete', [VehicleController::class, 'destroy'])->name('vehicle.delete');
+Route::group(['prefix' => 'mobil'], function () {
+    Route::get('/', [MobilController::class, 'index'])->name('mobil.index');
+    Route::post('/add', [MobilController::class, 'store'])->name('mobil.store');
+    Route::get('/{id}', [MobilController::class, 'show'])->name('mobil.show');
+    Route::post('/{id}/update', [MobilController::class, 'update'])->name('mobil.update');
+    Route::post('/{id}/delete', [MobilController::class, 'destroy'])->name('mobil.delete');
 });

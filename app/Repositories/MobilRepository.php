@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Vehicle;
+use App\Models\Mobil;
 use App\Repositories\BaseRepository;
 
-class VehicleRepository extends BaseRepository
+class MobilRepository extends BaseRepository
 {
-    public function __construct(Vehicle $model)
+    public function __construct(Mobil $model)
     {
         $this->model = $model;
     }

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\VehicleService;
+use App\Http\Requests\MobilRequest;
+use App\Services\MobilService;
 use Illuminate\Http\Request;
 
-class VehicleController extends Controller
+class MobilController extends Controller
 {
     protected $service;
     public function __construct(
-        VehicleService $service
+        MobilService $service
     )
     {
         $this->service = $service;
@@ -20,12 +21,12 @@ class VehicleController extends Controller
         return $this->service->index();
     }
 
-    public function store(Request $request)
+    public function store(MobilRequest $request)
     {
         return $this->service->store($request);
     }
 
-    public function update(Request $request, $id)
+    public function update(MobilRequest $request, $id)
     {
         return $this->service->update($request, $id);
     }

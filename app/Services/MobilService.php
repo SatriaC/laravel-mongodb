@@ -2,19 +2,19 @@
 
 namespace App\Services;
 
-use App\Models\Vehicle;
-use App\Repositories\VehicleRepository;
+use App\Models\Mobil;
+use App\Repositories\MobilRepository;
 use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class VehicleService extends BaseService
+class MobilService extends BaseService
 {
     protected $repo;
 
     public function __construct(
-        VehicleRepository $repo
+        MobilRepository $repo
     ) {
         parent::__construct();
         $this->repo = $repo;
@@ -47,19 +47,15 @@ class VehicleService extends BaseService
 
     public function update($request, $id)
     {
-        $db = DB::connection($this->connection);
-        $db->beginTransaction();
         try {
             $data = $request->all();
             $this->repo->update($data, $id);
-            $db->commit();
 
             $item = $this->repo->getById($id);
 
             return $this->responseMessage(__('content.message.update.success'), 200, true, $item);
         } catch (Exception $exc) {
             Log::error($exc);
-            $db->rollback();
             return $this->responseMessage(__('content.message.update.failed'), 400, false);
         }
     }
