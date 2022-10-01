@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\MotorController;
+use App\Http\Controllers\TipeSuspensiController;
+use App\Http\Controllers\TipeTransmisiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
@@ -31,11 +34,11 @@ Route::group(['prefix' => 'user'], function () {
 });
 
 Route::group(['prefix' => 'kendaraan'], function () {
-    Route::get('/', [Kendaraan::class, 'index'])->name('kendaraan.index');
-    Route::post('/add', [Kendaraan::class, 'store'])->name('kendaraan.store');
-    Route::get('/{id}', [Kendaraan::class, 'show'])->name('kendaraan.show');
-    Route::post('/{id}/update', [Kendaraan::class, 'update'])->name('kendaraan.update');
-    Route::post('/{id}/delete', [Kendaraan::class, 'destroy'])->name('kendaraan.delete');
+    Route::get('/', [KendaraanController::class, 'index'])->name('kendaraan.index');
+    Route::post('/add', [KendaraanController::class, 'store'])->name('kendaraan.store');
+    Route::get('/{id}', [KendaraanController::class, 'show'])->name('kendaraan.show');
+    Route::post('/{id}/update', [KendaraanController::class, 'update'])->name('kendaraan.update');
+    Route::post('/{id}/delete', [KendaraanController::class, 'destroy'])->name('kendaraan.delete');
 });
 
 Route::group(['prefix' => 'mobil'], function () {
@@ -52,4 +55,21 @@ Route::group(['prefix' => 'motor'], function () {
     Route::get('/{id}', [MotorController::class, 'show'])->name('motor.show');
     Route::post('/{id}/update', [MotorController::class, 'update'])->name('motor.update');
     Route::post('/{id}/delete', [MotorController::class, 'destroy'])->name('motor.delete');
+});
+
+
+Route::group(['prefix' => 'tipe-suspensi'], function () {
+    Route::get('/', [TipeSuspensiController::class, 'index'])->name('tipe.suspensi.index');
+    Route::post('/add', [TipeSuspensiController::class, 'store'])->name('tipe.suspensi.store');
+    Route::get('/{id}', [TipeSuspensiController::class, 'show'])->name('tipe.suspensi.show');
+    Route::post('/{id}/update', [TipeSuspensiController::class, 'update'])->name('tipe.suspensi.update');
+    Route::post('/{id}/delete', [TipeSuspensiController::class, 'destroy'])->name('tipe.suspensi.delete');
+});
+
+Route::group(['prefix' => 'tipe-transmisi'], function () {
+    Route::get('/', [TipeTransmisiController::class, 'index'])->name('tipe.transmisi.index');
+    Route::post('/add', [TipeTransmisiController::class, 'store'])->name('tipe.transmisi.store');
+    Route::get('/{id}', [TipeTransmisiController::class, 'show'])->name('tipe.transmisi.show');
+    Route::post('/{id}/update', [TipeTransmisiController::class, 'update'])->name('tipe.transmisi.update');
+    Route::post('/{id}/delete', [TipeTransmisiController::class, 'destroy'])->name('tipe.transmisi.delete');
 });
