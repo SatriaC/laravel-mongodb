@@ -15,8 +15,8 @@ class CreateMobilTable extends Migration
     {
         Schema::create('mobil', function (Blueprint $table) {
             $table->string('mesin');
-            $table->integer('tipe_suspensi');
-            $table->integer('tipe_transmisi');
+            $table->integer('kapasitas');
+            $table->integer('tipe');
             $table->timestamps();
         });
     }

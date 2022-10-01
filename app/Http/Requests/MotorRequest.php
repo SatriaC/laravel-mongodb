@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class MobilRequest extends FormRequest
+class MotorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,8 @@ class MobilRequest extends FormRequest
     {
         return [
             'mesin'=>'required',
-            'kapasitas'=>'required',
-            'tipe'=>'required',
+            'tipe_suspensi'=>'required',
+            'tipe_transmisi'=>'required',
         ];
     }
 

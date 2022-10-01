@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Mobil extends Model
+class Motor extends Model
 {
     use HasFactory;
-    protected $collection = 'mobil';
+    protected $collection = 'motor';
     protected $primaryKey = '_id';
     protected $fillable = [
         'mesin',
-        'kapasitas',
-        'tipe'
+        'tipe_suspensi',
+        'tipe_transmisi'
     ];
 }

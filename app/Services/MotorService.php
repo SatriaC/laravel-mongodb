@@ -2,17 +2,17 @@
 
 namespace App\Services;
 
-use App\Repositories\MobilRepository;
+use App\Repositories\MotorRepository;
 use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class MobilService extends BaseService
+class MotorService extends BaseService
 {
     protected $repo;
 
     public function __construct(
-        MobilRepository $repo
+        MotorRepository $repo
     ) {
         parent::__construct();
         $this->repo = $repo;

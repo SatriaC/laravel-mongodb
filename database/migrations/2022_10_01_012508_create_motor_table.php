@@ -15,8 +15,8 @@ class CreateMotorTable extends Migration
     {
         Schema::create('motor', function (Blueprint $table) {
             $table->string('mesin');
-            $table->integer('kapasitas');
-            $table->integer('tipe');
+            $table->integer('tipe_suspensi');
+            $table->integer('tipe_transmisi');
             $table->timestamps();
         });
     }

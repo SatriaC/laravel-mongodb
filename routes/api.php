@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MobilController;
+use App\Http\Controllers\MotorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Http\Request;
@@ -35,4 +36,12 @@ Route::group(['prefix' => 'mobil'], function () {
     Route::get('/{id}', [MobilController::class, 'show'])->name('mobil.show');
     Route::post('/{id}/update', [MobilController::class, 'update'])->name('mobil.update');
     Route::post('/{id}/delete', [MobilController::class, 'destroy'])->name('mobil.delete');
+});
+
+Route::group(['prefix' => 'motor'], function () {
+    Route::get('/', [MotorController::class, 'index'])->name('motor.index');
+    Route::post('/add', [MotorController::class, 'store'])->name('motor.store');
+    Route::get('/{id}', [MotorController::class, 'show'])->name('motor.show');
+    Route::post('/{id}/update', [MotorController::class, 'update'])->name('motor.update');
+    Route::post('/{id}/delete', [MotorController::class, 'destroy'])->name('motor.delete');
 });
