@@ -26,9 +26,13 @@ class KendaraanRequest extends FormRequest
     public function rules()
     {
         return [
-            'mesin'=>'required',
-            'tipe_suspensi'=>'required',
-            'tipe_transmisi'=>'required',
+            'merk'=>'required',
+            'warna'=>'required',
+            'tahun_keluaran'=>'required',
+            'harga'=>'required',
+            'tipe'=>'required',
+            'mobil_id'=>'required_if:tipe,==,1',
+            'motor_id'=>'required_if:tipe,==,2',
         ];
     }
 

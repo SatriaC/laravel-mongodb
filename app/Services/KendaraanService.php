@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Helpers\Pagination;
 use App\Repositories\KendaraanRepository;
 use App\Services\BaseService;
 use Exception;
@@ -18,12 +19,12 @@ class KendaraanService extends BaseService
         $this->repo = $repo;
     }
 
-    public function index()
+    public function index($request)
     {
         try {
-            $data = $this->repo->all();
+            $item = $this->repo->getAll($request);
 
-            return $this->responseMessage(__('content.message.read.success'), 200, true, $data);
+            return Pagination::paginate($item, $request);
         } catch (Exception $exc) {
             Log::error($exc);
             return $this->responseMessage(__('content.message.read.failed'), 400, false);

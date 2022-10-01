@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\KendaraanRequest;
 use App\Services\KendaraanService;
+use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
 {
@@ -15,9 +16,9 @@ class KendaraanController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->service->index();
+        return $this->service->index($request);
     }
 
     public function store(KendaraanRequest $request)
