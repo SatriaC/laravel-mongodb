@@ -36,6 +36,8 @@ return [
         ],
         'login' => [
             'success' => 'Authenticated.',
+            'email_not_registered' => 'The email is not registered. Please sign up!',
+            'credential_not_match' => 'These credentials do not match our records.',
             'failed' => 'Could not create :object. Please check again.',
         ],
         'sync' => [

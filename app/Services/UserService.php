@@ -34,37 +34,29 @@ class UserService extends BaseService
 
     public function store($request)
     {
-        $db = DB::connection($this->connection);
-        $db->beginTransaction();
         try {
             $data = $request->all();
             $data['password'] = bcrypt($request->password);
             $item = $this->repo->create($data);
-            $db->commit();
 
             return $this->responseMessage(__('content.message.create.success'), 200, true, $item);
         } catch (Exception $exc) {
             Log::error($exc);
-            $db->rollback();
             return $this->responseMessage(__('content.message.create.failed'), 400, false);
         }
     }
 
     public function update($request, $id)
     {
-        $db = DB::connection($this->connection);
-        $db->beginTransaction();
         try {
             $data = $request->all();
             $this->repo->update($data, $id);
-            $db->commit();
 
             $item = $this->repo->getById($id);
 
             return $this->responseMessage(__('content.message.update.success'), 200, true, $item);
         } catch (Exception $exc) {
             Log::error($exc);
-            $db->rollback();
             return $this->responseMessage(__('content.message.update.failed'), 400, false);
         }
     }

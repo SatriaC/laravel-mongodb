@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('warna');
             $table->integer('tahun_keluaran');
             $table->integer('harga');
-            $table->tinyInteger('tipe');
-            $table->integer('ref_id');
+            $table->integer('tipe');
+            $table->string('mobil_id')->nullable();
+            $table->string('motor_id')->nullable();
+            $table->integer('stok')->default(0);
             $table->timestamps();
         });
     }

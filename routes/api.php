@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\MotorController;
@@ -24,6 +25,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+});
+
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', [UserController::class, 'index'])->name('user.index');
@@ -56,7 +62,6 @@ Route::group(['prefix' => 'motor'], function () {
     Route::post('/{id}/update', [MotorController::class, 'update'])->name('motor.update');
     Route::post('/{id}/delete', [MotorController::class, 'destroy'])->name('motor.delete');
 });
-
 
 Route::group(['prefix' => 'tipe-suspensi'], function () {
     Route::get('/', [TipeSuspensiController::class, 'index'])->name('tipe.suspensi.index');
