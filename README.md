@@ -1,5 +1,5 @@
 
-> This application brings you in a business of vehicle where you can make the data, check the stock and also for the user can put the item they want to the cart and proceed it to the order in order to purchase it.
+> This application brings you in a business of vehicle where you can make the data, check the stock and also for the user can put the item they want into the cart and proceed it to the order in order to purchase it.
 
 ### Prerequisites
 Please make sure your operation system has configured mongodb database. [Official Documentation](https://www.mongodb.com/docs/manual/administration/install-community/)
