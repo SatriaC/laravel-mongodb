@@ -63,6 +63,7 @@ class MotorSeeder extends Seeder
         Kendaraan::create([
             'merk'=>'Biat',
             'warna'=> 'hitam',
+            'harga'=> 200000000,
             'tahun_keluaran'=> 2022,
             'tipe'=> 2,
             'motor_id' => $motor1->id,
@@ -72,6 +73,7 @@ class MotorSeeder extends Seeder
         Kendaraan::create([
             'merk'=>'Subra',
             'warna'=> 'merah',
+            'harga'=> 220000000,
             'tahun_keluaran'=> 2020,
             'tipe'=> 2,
             'motor_id' => $motor2->id,
@@ -80,6 +82,7 @@ class MotorSeeder extends Seeder
 
         Kendaraan::create([
             'merk'=>'Bario',
+            'harga'=> 300000000,
             'warna'=> 'silver',
             'tahun_keluaran'=> 2021,
             'tipe'=> 2,

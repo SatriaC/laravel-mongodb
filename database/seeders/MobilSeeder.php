@@ -35,6 +35,7 @@ class MobilSeeder extends Seeder
             'merk'=>'Pajiro',
             'warna'=> 'hitam',
             'tahun_keluaran'=> 2022,
+            'harga'=> 5000000000,
             'tipe'=> 1,
             'mobil_id' => $mobil1->id,
             'stok'=> 100,
@@ -44,6 +45,7 @@ class MobilSeeder extends Seeder
             'merk'=>'Ayva',
             'warna'=> 'merah',
             'tahun_keluaran'=> 2020,
+            'harga'=> 2000000000,
             'tipe'=> 1,
             'mobil_id' => $mobil2->id,
             'stok'=> 100,
@@ -51,6 +53,7 @@ class MobilSeeder extends Seeder
 
         Kendaraan::create([
             'merk'=>'Avanda',
+            'harga'=> 3000000000,
             'warna'=> 'silver',
             'tahun_keluaran'=> 2021,
             'tipe'=> 1,

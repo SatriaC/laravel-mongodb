@@ -107,9 +107,8 @@ class OrderService extends BaseService
 
     public function processDecreasing($order_id)
     {
-        $orderItems = $this->repoItem->getByOrderId($order_id);
+        $orderItems = $this->repoItem->getByOrderId(null, $order_id)->get();
         foreach ($orderItems as $item) {
-            $user_id = $item->order->user_id;
             $checkItem = $this->repoKendaraan->getById($item->kendaraan_id);
             $result = $checkItem->stok - $item->qty;
             $dataKendaraan['stok'] = $result;

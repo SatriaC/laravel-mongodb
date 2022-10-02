@@ -14,32 +14,10 @@ class KendaraanRepository extends BaseRepository
     }
 
     public function getAll($request){
-        $data = $this->model;
+        $data = $this->model->orderBy('kendaraan.created_at', 'desc');
 
         if (isset($request->tipe)) {
-            $data->where('tipe', $request->tipe);
-        }
-
-        if (isset($request->start_date) && isset($request->end_date)) {
-            $start_date = Carbon::parse($request->start_date)->startOfDay();
-            $end_date = Carbon::parse($request->end_date)->endOfDay();
-            $data = $data->whereBetween('kendaraan.created_at', array($start_date, $end_date));
-        }
-
-        if (isset($request->sort)) {
-            switch ($request->sort) {
-                case 1:
-                    $data->orderBy('kendaraan.created_at', 'asc');
-                    break;
-
-                case 2:
-                    $data->orderBy('kendaraan.created_at', 'desc');
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            $data->orderBy('kendaraan.created_at', 'desc');
+            $data->where('tipe', (int)$request->tipe);
         }
 
         return $data;
