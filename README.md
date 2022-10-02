@@ -124,3 +124,9 @@ You can view the following API routes:
 1. Add more price like discount, etc: `POST` /api/order/{id}/update 
 1. Get a single penjualan: `GET` /api/order/{id}
 1. Get all items by the id of order, and you can check penjualan per vehicle or in terms of time do you want (use the filter): `GET` /api/order/{id}/items
+
+# Unit Testing
+
+Run this code
+
+    php artisan test
