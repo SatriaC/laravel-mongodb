@@ -37,6 +37,7 @@ Run the database migrations (**Set the database connection in .env before migrat
     php artisan migrate
 
 Generate the seeder
+
     php artisan db:seed
 
 Generate a new Passport secret key
