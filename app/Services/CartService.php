@@ -36,7 +36,6 @@ class CartService extends BaseService
                 return $this->responseMessage(__('content.message.delete.success'), 200, true, new stdClass());
             }
             $checkItem = $this->repoKendaraan->getById($request->kendaraan_id);
-            // dd($checkItem);
             if ($request->qty > $checkItem->stok) {
                 return $this->responseMessage(__('content.message.cart.not_available'), 400, false, new stdClass());
             }

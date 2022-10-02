@@ -5,6 +5,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\MobilController;
 use App\Http\Controllers\MotorController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\TipeSuspensiController;
 use App\Http\Controllers\TipeTransmisiController;
 use App\Http\Controllers\UserController;
@@ -23,13 +25,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
 Route::group(['middleware' => 'auth:api'], function () {
     Route::group(['prefix' => 'cart'], function () {
         Route::get('/', [CartController::class, 'show'])->name('cart.show');
         Route::post('/update', [CartController::class, 'updateOrCreate'])->name('cart.update');
+    });
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order.index');
+        Route::post('/add', [OrderController::class, 'store'])->name('order.store');
+        Route::get('/{id}', [OrderController::class, 'show'])->name('order.show');
+        Route::post('/{id}/update', [OrderController::class, 'update'])->name('order.update');
+        Route::get('/{id}/items', [OrderItemController::class, 'index'])->name('order.item.index');
     });
 });
 

@@ -44,4 +44,11 @@ class CartRepository extends BaseRepository
 
         return $data;
     }
+
+    public function getByUserId()
+    {
+        $data = $this->model->where('user_id', Auth::guard('api')->user()->id)->orderBy('created_at', 'desc')->get();
+
+        return $data;
+    }
 }
