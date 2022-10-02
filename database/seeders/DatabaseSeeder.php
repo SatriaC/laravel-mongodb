@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(MasterSeeder::class);
+        $this->call(MotorSeeder::class);
+        $this->call(MobilSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
